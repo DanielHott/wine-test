@@ -11,6 +11,14 @@ Acesse a aplicação aqui: https://wine-test-iota.vercel.app/
 
 Este front-end foi desenvolvido com Next.js, Typescript e Axios. O deploy foi feito na Vercel.
 
+## Features
+
+- Pesquisa por nome: Basta clicar no ícone de pesquisa no header.
+- Tela de explorar vinho: Selecione o vinho escolhido e entrará na aba de explorar vinhos.
+- Remover itens do carrinho: Para remover, clique no ícone na Wine com o fundo redondo laranja que o carrinho irá ser exibido com um botão "Remover".
+- Paginação: A paginação está disponível no final do site, e permite navegar pelos vinhos fornecidos pela API.
+- Filtro por preço: Há um filtro de preços na esquerda do site que permite filtrar os preços dos vinhos.
+
 ## Copiando para sua máquina:
 
 Clone o projeto
