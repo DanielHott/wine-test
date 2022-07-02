@@ -19,6 +19,9 @@ Este front-end foi desenvolvido com Next.js, Typescript e Axios. O deploy foi fe
 - Paginação: A paginação está disponível no final do site, e permite navegar pelos vinhos fornecidos pela API.
 - Filtro por preço: Há um filtro de preços na esquerda do site que permite filtrar os preços dos vinhos.
 
+
+![Web 1](https://github.com/DanielHott/imagens/blob/master/wine.png)
+
 ## Copiando para sua máquina:
 
 Clone o projeto
