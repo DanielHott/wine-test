@@ -9,7 +9,7 @@ Acesse a aplicação aqui: https://wine-test-iota.vercel.app/
 
 ## Tecnologias
 
-Este front-end foi desenvolvido com Next.js e Axios. O deploy foi feito na Vercel.
+Este front-end foi desenvolvido com Next.js, Typescript e Axios. O deploy foi feito na Vercel.
 
 ## Copiando para sua máquina:
 
