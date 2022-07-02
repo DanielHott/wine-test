@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     width: 100%;
+
     h1 {
         font-size: 18px;
         margin-top: 30px;
@@ -28,6 +29,21 @@ export const ButtonCard = styled.div`
     button:hover {
         background: #7FCC43;
     }
+    @media only screen and (min-width: 300px) and (max-width: 500px) {
+       width: 50%;
+       button {
+        margin-left: 10px;
+        width: 156px;
+        background: #7EBC43;
+        box-shadow: 0px 0.973384px 1.94677px rgba(0, 0, 0, 0.2);
+        border-radius: 3.89354px;
+        height: 39.36px;
+        color: white;
+        border: none;
+        font-size: 14px;
+    }
+    } 
+
 `;
 
 export const Card = styled.div`
@@ -35,6 +51,16 @@ export const Card = styled.div`
     display: flex;
     flex-direction:row;
     flex-wrap: wrap;
+
+`;
+
+export const Loading = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: gray;
 `;
 
 export const CardItem = styled.div`
@@ -56,6 +82,8 @@ export const CardItem = styled.div`
         font-style: normal;
         font-weight: 700;
     }
+
+    
 `;
 
 export const OldPrice = styled.div`

@@ -22,6 +22,39 @@ export const Headers = styled.div`
         border: 2px solid #D14B8F;
         background: #D14B8F;
     }
+
+    @media only screen and (min-width: 300px) and (max-width: 500px) {;
+        margin-left: 0px;
+    } 
+`;
+
+export const CartArea  = styled.div.attrs(
+    (props: { isHidden: boolean }) => props
+  )`
+    top: ${(props) => (props.isHidden ? '-1px' : '-9vh')};
+    visibility: ${(props) => (props.isHidden ? 'visible' : 'hidden')};
+    position: absolute;
+    z-index: 100;
+    background: white;
+    width: 250px;
+    height: 80vh;
+    margin-left: -130px;
+    margin-top: 91px;
+    overflow-y: scroll;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border: 3px solid #8888;
+    p {
+        color: #D14B8F;
+        margin-top: -10px;
+    }
+
+    h1 {
+        color: #888888;
+        margin-top: 150px;
+        text-align: center;
+    }
 `;
 
 export const Titles = styled.div`
@@ -48,10 +81,26 @@ export const Profile = styled.div`
     }
 `;
 
+export const CartHidden = styled.div`
+    max-height: 300px;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    hr {
+        width: 100px;
+    }
+
+    button {
+        margin-left: 5px;
+    }
+`;
+
 export const Line = styled.div`
 position: absolute;
 height: 2px;
-left: calc(51% - 3px/2 - 275.35px);
+left: calc(51% - 3px/2 - 269.35px);
 top: 80px;
 background: #D14B8F;
 `;

@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext } from "react";
+import Link from "next/link";
 import { CartContext } from "../../contexts/CartContext";
 import Image from "next/image";
 import {
@@ -9,6 +10,7 @@ import {
   MemberPrice,
   NormalPrice,
   ButtonCard,
+  Loading,
 } from "./styles";
 import {
   searchSomeWines,
@@ -30,11 +32,18 @@ export function CardsArea() {
     setActualPage,
     cart,
     setCart,
-  } = useContext(CartContext);
+    product,
+    setProduct,
+  }: any = useContext(CartContext);
+
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     if (!searchMode) {
       searchSomeWines(actualPage).then(({ items }) => setWines(items));
-      searchAllWines().then(({ items }) => setAllWines(items));
+      searchAllWines().then(({ items }) => {
+        setAllWines(items);
+        setLoading(false);
+      });
     }
   }, [actualPage]);
 
@@ -47,6 +56,14 @@ export function CardsArea() {
     if (name === "") searchAllWines().then(({ items }) => setAllWines(items));
   }
 
+  const setActCart = async (item) => {
+    const actualCart = JSON.parse(localStorage.getItem("cart"));
+    setCart([...cart, item]);
+    localStorage.setItem("cart", JSON.stringify([...actualCart, item]));
+  };
+
+  if (loading) return <Loading>Carregando...</Loading>;
+
   return (
     <Container>
       <h1>{allWines.length} produtos encontrados</h1>
@@ -56,27 +73,43 @@ export function CardsArea() {
             const value = item.priceMember.toFixed(2).replace(".", ",");
             return (
               <ButtonCard key={item.id}>
-                <CardItem>
-                  <Image src={item.image} alt="" width={128} height={189} />
-                  <p>{item.name}</p>
-                  <OldPrice>
-                    <h4>R$ {item.price.toFixed(2).replace(".", ",")}</h4>
-                    <h5>{item.discount}% OFF</h5>
-                  </OldPrice>
-                  <MemberPrice>
-                    <h5>SÓCIO WINE</h5>
-                    <h6>R$</h6>
-                    <h4>{value}</h4>
-                    <h6>{}</h6>
-                  </MemberPrice>
-                  <NormalPrice>
-                    <h5>
-                      NÃO SÓCIO R${" "}
-                      {item.priceNonMember.toFixed(2).replace(".", ",")}
-                    </h5>
-                  </NormalPrice>
-                </CardItem>
-                <button onClick={() => setCart([...cart, item])}>
+                <Link href="/product">
+                  <CardItem onClick={() => setProduct(item)}>
+                    <Image
+                      src={item.image}
+                      alt="wine-bottle"
+                      width={128}
+                      height={189}
+                    />
+                    <p>{item.name}</p>
+                    <OldPrice>
+                      <h4>R$ {item.price.toFixed(2).replace(".", ",")}</h4>
+                      <h5>{item.discount}% OFF</h5>
+                    </OldPrice>
+                    <MemberPrice>
+                      <h5>SÓCIO WINE</h5>
+                      <h6>R$</h6>
+                      <h4>{value}</h4>
+                      <h6>{}</h6>
+                    </MemberPrice>
+                    <NormalPrice>
+                      <h5>
+                        NÃO SÓCIO R${" "}
+                        {item.priceNonMember.toFixed(2).replace(".", ",")}
+                      </h5>
+                    </NormalPrice>
+                  </CardItem>
+                </Link>
+                <button
+                  onClick={() =>
+                    setActCart({
+                      priceMember: item.priceMember,
+                      image: item.image,
+                      name: item.name,
+                      quantity: 1,
+                    })
+                  }
+                >
                   Adicionar
                 </button>
               </ButtonCard>
