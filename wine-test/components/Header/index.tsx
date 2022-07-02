@@ -1,7 +1,16 @@
 import { Headers, Titles, Profile, WineBox, CircleWine, Line } from './styles';
+import { useState, useContext } from 'react'
+import { CartContext } from '../../contexts/CartContext'
 import Image from 'next/image';
 
 export function Header () {
+    const { name, setName, setSearchMode, cart } = useContext(CartContext)
+    const [search, setSearch] = useState(false);
+    const [actName, setActName] = useState('');
+    const canSearch = () => {
+        setName(actName);
+        setSearchMode(true)
+    }
     return (
         <Headers>
         <Image
@@ -22,7 +31,14 @@ export function Header () {
         width={56}
         height={56}
         alt=""
+        onClick={() => setSearch(search === true ? false : true )}
         />
+        { search &&
+        <>
+        <input type="text" placeholder="Pesquise seu vinho favorito" onChange={(name) => setActName(`${name.target.value}`)}></input>
+        <button onClick={() => canSearch()}>Pesquisar</button>
+        </>
+        }
         <Profile>
         <Image
         src="/assets/Header/Vector.svg"
@@ -47,6 +63,7 @@ export function Header () {
         height={56}
         alt=""
         />
+        <p>{cart.length}</p>
         </WineBox>
         </CircleWine>
         <Line>

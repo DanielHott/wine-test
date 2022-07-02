@@ -4,13 +4,13 @@ import { Header } from '../components/Header/index'
 import { Search } from '../components/Search-Menu'
 import { CardsArea } from '../components/Cards-Area/index'
 import { Main, Paginate } from '../styles/main';
+import { CartContext } from '../contexts/CartContext'
 import styles from '../styles/Home.module.css'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 
 export default function Home() {
   const [page, setPage] = useState(1);
-  const [ actualPage, setActualPage ] = useState(1);
-
+  const { cart, actualPage, setActualPage } = useContext(CartContext)
   const changePageDown = () => {
     if(page >= 2 && page < 8) setPage(page - 1);
   }
@@ -24,7 +24,7 @@ export default function Home() {
     <Header />
     <Main>
       <Search />
-      <CardsArea {...`${actualPage}`} />
+      <CardsArea/>
     </Main>
     <Paginate>
     <button onClick={() => changePageDown()}>{'<<'} Anterior</button>

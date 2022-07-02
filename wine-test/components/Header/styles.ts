@@ -9,6 +9,19 @@ export const Headers = styled.div`
     width: 100%;
     height: 88px;
     box-shadow: 2px 2px 2px 2px #CCCCCC;
+
+    input {
+        margin-left: -61px;
+        border-radius: 5px;
+    }
+
+    button {
+        margin-left: -60px;
+        color: white;
+        border-radius: 5px;
+        border: 2px solid #D14B8F;
+        background: #D14B8F;
+    }
 `;
 
 export const Titles = styled.div`
@@ -47,6 +60,17 @@ export const WineBox = styled.div`
     margin-left: 8px;
     img  {
         border-radius: 16px;
+    }
+    p {
+        position: absolute;
+        margin-top: -23px;
+        margin-left: 25px;
+        background: white;
+        color: #4FBFA5;
+        padding-left: 5px;
+        padding-right: 5px;
+        border-radius: 20px;
+        box-shadow: 0px 2px #888888;
     }
 `;
 
